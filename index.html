@@ -1,0 +1,125 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dos años juntos</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Arial Rounded MT Bold', sans-serif; background-color: #fff; overflow-x: hidden; }
+    .pantalla { width: 100vw; height: 100vh; position: absolute; top: 0; left: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px; transition: opacity 1s ease, transform 1s ease; }
+    .oculta { opacity: 0; transform: scale(1.05); pointer-events: none; }
+    h1 { color: red; font-size: 3em; margin-bottom: 20px; background: #ffe5e5; padding: 20px; border-radius: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); text-align: center; }
+    h2 { color: #cc0000; margin-top: 20px; font-size: 2em; }
+    h4 { margin-top: 20px; font-size: 1.2em; color: #444; }
+    .slide { position: absolute; width: 100%; opacity: 0; transition: opacity 1s; display: flex; justify-content: center; align-items: center; }
+    .slide img { width: 100%; max-height: 500px; object-fit: contain; border: 10px solid white; box-shadow: 0 8px 16px rgba(0,0,0,0.3); border-radius: 15px; }
+    .slide.active { opacity: 1; position: relative; }
+    .flecha, .pausa, .boton { cursor: pointer; padding: 10px 20px; margin: 10px; border: none; border-radius: 20px; background: red; color: white; font-size: 1em; }
+    .boton:hover { background: darkred; }
+    video { margin-top: 30px; max-width: 90vw; border-radius: 20px; box-shadow: 0 0 15px rgba(0,0,0,0.3); }
+    .respuesta { margin-top: 30px; text-align: center; padding: 20px; font-size: 1.1em; max-width: 800px; }
+  </style>
+</head>
+<body>
+
+<!-- Pantalla 1 -->
+<div id="pantalla1" class="pantalla">
+  <h1>Dos años juntos</h1>
+  <button class="boton" onclick="cambiarPantalla('pantalla2')">Iniciar</button>
+  <audio autoplay loop>
+    <source src="audio.mp3" type="audio/mpeg">
+  </audio>
+</div>
+
+<!-- Pantalla 2 -->
+<div id="pantalla2" class="pantalla oculta">
+  <h1>Con vos conocí experiencias nuevas</h1>
+  <h2>Aventuras juntos</h2>
+<div class="slide active"><img src="imagenes_more/WhatsApp Image 2025-05-27 at 22.00.03.jpeg"></div>
+<div class="slide"><img src="imagenes_more/WhatsApp Image 2025-05-27 at 22.02.16.jpeg"></div>
+<div class="slide"><img src="imagenes_more/WhatsApp Image 2025-05-27 at 22.02.24.jpeg"></div>
+<div class="slide"><img src="imagenes_more/WhatsApp Image 2025-05-27 at 22.02.25 (1).jpeg"></div>
+<div class="slide"><img src="imagenes_more/WhatsApp Image 2025-05-27 at 22.02.25 (2).jpeg"></div>
+<div class="slide"><img src="imagenes_more/WhatsApp Image 2025-05-27 at 22.02.25 (3).jpeg"></div>
+<div class="slide"><img src="imagenes_more/WhatsApp Image 2025-05-27 at 22.02.25 (4).jpeg"></div>
+<div class="slide"><img src="imagenes_more/WhatsApp Image 2025-05-27 at 22.02.25.jpeg"></div>
+<div class="slide"><img src="imagenes_more/WhatsApp Image 2025-05-27 at 22.02.26.jpeg"></div>
+<div class="slide"><img src="imagenes_more/WhatsApp Image 2025-05-27 at 22.04.40.jpeg"></div>
+<div class="slide"><img src="imagenes_more/WhatsApp Image 2025-05-27 at 22.04.41 (1).jpeg"></div>
+<div class="slide"><img src="imagenes_more/WhatsApp Image 2025-05-27 at 22.04.41.jpeg"></div>
+<div class="slide"><img src="imagenes_more/WhatsApp Image 2025-05-27 at 22.05.21.jpeg"></div>
+<div class="slide"><img src="imagenes_more/WhatsApp Image 2025-05-27 at 22.06.17.jpeg"></div>
+<div class="slide"><img src="imagenes_more/WhatsApp Image 2025-05-27 at 22.06.56.jpeg"></div>
+  <button class="flecha" onclick="anteriorSlide()">❮</button>
+  <button class="flecha" onclick="siguienteSlide()">❯</button>
+  <button class="pausa" onclick="togglePausa()">⏸️</button>
+  <button class="boton" onclick="cambiarPantalla('pantalla3')">Siguiente</button>
+</div>
+
+<!-- Pantalla 3 -->
+<div id="pantalla3" class="pantalla oculta">
+  <h1>Gracias por regarme un poco de tu tiempo</h1>
+  <video controls src="video.MOV"></video>
+  <h4>¿Te gustaría seguir compartiendo experiencias juntos?</h4>
+  <div>
+    <button class="boton" onclick="cambiarPantalla('pantalla4')">Sí, quiero</button>
+    <button class="boton" onclick="cambiarPantalla('pantalla5')">No quiero</button>
+  </div>
+</div>
+
+<!-- Pantalla Sí -->
+<div id="pantalla4" class="pantalla oculta">
+  <div class="respuesta">
+    <p>Después de 730 días, 17.520 horas, 1.051.200 minutos, 63.072.000 segundos y seguís queriéndome acompañar???</p>
+    <p>Eso es mucho aguante. Tanto tiempo juntos hace que sepa hasta cuándo tenés hambre o estás de mal humor. Ya sé, conozco demasiado... ahora falta que sigamos conociendo el mundo juntos.</p>
+    <p><strong>Te amo, mi amor.</strong></p>
+  </div>
+</div>
+
+<!-- Pantalla No -->
+<div id="pantalla5" class="pantalla oculta">
+  <h1>Esta opción no está disponible 💔</h1>
+</div>
+
+<script>
+let slides = document.querySelectorAll('.slide');
+let current = 0;
+let pausado = false;
+let intervalo = setInterval(siguienteSlide, 3000);
+
+function mostrarSlide(index) {
+  slides.forEach((slide, i) => {
+    slide.classList.remove('active');
+    if (i === index) slide.classList.add('active');
+  });
+}
+
+function siguienteSlide() {
+  if (!pausado) {
+    current = (current + 1) % slides.length;
+    mostrarSlide(current);
+  }
+}
+
+function anteriorSlide() {
+  current = (current - 1 + slides.length) % slides.length;
+  mostrarSlide(current);
+}
+
+function togglePausa() {
+  pausado = !pausado;
+  document.querySelector('.pausa').textContent = pausado ? '▶️' : '⏸️';
+}
+
+function cambiarPantalla(id) {
+  document.querySelectorAll('.pantalla').forEach(p => p.classList.add('oculta'));
+  document.getElementById(id).classList.remove('oculta');
+}
+
+mostrarSlide(current);
+</script>
+
+</body>
+</html>
