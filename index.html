@@ -23,8 +23,6 @@
   </style>
 </head>
 <body>
-
-<!-- Pantalla 1 -->
 <div id="pantalla1" class="pantalla">
   <h1>Dos años juntos</h1>
   <button class="boton" onclick="cambiarPantalla('pantalla2')">Iniciar</button>
@@ -32,33 +30,29 @@
     <source src="audio.mp3" type="audio/mpeg">
   </audio>
 </div>
-
-<!-- Pantalla 2 -->
 <div id="pantalla2" class="pantalla oculta">
   <h1>Con vos conocí experiencias nuevas</h1>
   <h2>Aventuras juntos</h2>
-<div class="slide active"><img src="imagenes_more/WhatsApp Image 2025-05-27 at 22.00.03.jpeg"></div>
-<div class="slide"><img src="imagenes_more/WhatsApp Image 2025-05-27 at 22.02.16.jpeg"></div>
-<div class="slide"><img src="imagenes_more/WhatsApp Image 2025-05-27 at 22.02.24.jpeg"></div>
-<div class="slide"><img src="imagenes_more/WhatsApp Image 2025-05-27 at 22.02.25 (1).jpeg"></div>
-<div class="slide"><img src="imagenes_more/WhatsApp Image 2025-05-27 at 22.02.25 (2).jpeg"></div>
-<div class="slide"><img src="imagenes_more/WhatsApp Image 2025-05-27 at 22.02.25 (3).jpeg"></div>
-<div class="slide"><img src="imagenes_more/WhatsApp Image 2025-05-27 at 22.02.25 (4).jpeg"></div>
-<div class="slide"><img src="imagenes_more/WhatsApp Image 2025-05-27 at 22.02.25.jpeg"></div>
-<div class="slide"><img src="imagenes_more/WhatsApp Image 2025-05-27 at 22.02.26.jpeg"></div>
-<div class="slide"><img src="imagenes_more/WhatsApp Image 2025-05-27 at 22.04.40.jpeg"></div>
-<div class="slide"><img src="imagenes_more/WhatsApp Image 2025-05-27 at 22.04.41 (1).jpeg"></div>
-<div class="slide"><img src="imagenes_more/WhatsApp Image 2025-05-27 at 22.04.41.jpeg"></div>
-<div class="slide"><img src="imagenes_more/WhatsApp Image 2025-05-27 at 22.05.21.jpeg"></div>
-<div class="slide"><img src="imagenes_more/WhatsApp Image 2025-05-27 at 22.06.17.jpeg"></div>
-<div class="slide"><img src="imagenes_more/WhatsApp Image 2025-05-27 at 22.06.56.jpeg"></div>
+<div class="slide active"><img src="imagenes_simple/img1.jpeg"></div>
+<div class="slide"><img src="imagenes_simple/img2.jpeg"></div>
+<div class="slide"><img src="imagenes_simple/img3.jpeg"></div>
+<div class="slide"><img src="imagenes_simple/img4.jpeg"></div>
+<div class="slide"><img src="imagenes_simple/img5.jpeg"></div>
+<div class="slide"><img src="imagenes_simple/img6.jpeg"></div>
+<div class="slide"><img src="imagenes_simple/img7.jpeg"></div>
+<div class="slide"><img src="imagenes_simple/img8.jpeg"></div>
+<div class="slide"><img src="imagenes_simple/img9.jpeg"></div>
+<div class="slide"><img src="imagenes_simple/img10.jpeg"></div>
+<div class="slide"><img src="imagenes_simple/img11.jpeg"></div>
+<div class="slide"><img src="imagenes_simple/img12.jpeg"></div>
+<div class="slide"><img src="imagenes_simple/img13.jpeg"></div>
+<div class="slide"><img src="imagenes_simple/img14.jpeg"></div>
+<div class="slide"><img src="imagenes_simple/img15.jpeg"></div>
   <button class="flecha" onclick="anteriorSlide()">❮</button>
   <button class="flecha" onclick="siguienteSlide()">❯</button>
   <button class="pausa" onclick="togglePausa()">⏸️</button>
   <button class="boton" onclick="cambiarPantalla('pantalla3')">Siguiente</button>
 </div>
-
-<!-- Pantalla 3 -->
 <div id="pantalla3" class="pantalla oculta">
   <h1>Gracias por regarme un poco de tu tiempo</h1>
   <video controls src="video.MOV"></video>
@@ -68,8 +62,6 @@
     <button class="boton" onclick="cambiarPantalla('pantalla5')">No quiero</button>
   </div>
 </div>
-
-<!-- Pantalla Sí -->
 <div id="pantalla4" class="pantalla oculta">
   <div class="respuesta">
     <p>Después de 730 días, 17.520 horas, 1.051.200 minutos, 63.072.000 segundos y seguís queriéndome acompañar???</p>
@@ -77,49 +69,39 @@
     <p><strong>Te amo, mi amor.</strong></p>
   </div>
 </div>
-
-<!-- Pantalla No -->
 <div id="pantalla5" class="pantalla oculta">
   <h1>Esta opción no está disponible 💔</h1>
 </div>
-
 <script>
 let slides = document.querySelectorAll('.slide');
 let current = 0;
 let pausado = false;
 let intervalo = setInterval(siguienteSlide, 3000);
-
 function mostrarSlide(index) {
   slides.forEach((slide, i) => {
     slide.classList.remove('active');
     if (i === index) slide.classList.add('active');
   });
 }
-
 function siguienteSlide() {
   if (!pausado) {
     current = (current + 1) % slides.length;
     mostrarSlide(current);
   }
 }
-
 function anteriorSlide() {
   current = (current - 1 + slides.length) % slides.length;
   mostrarSlide(current);
 }
-
 function togglePausa() {
   pausado = !pausado;
   document.querySelector('.pausa').textContent = pausado ? '▶️' : '⏸️';
 }
-
 function cambiarPantalla(id) {
   document.querySelectorAll('.pantalla').forEach(p => p.classList.add('oculta'));
   document.getElementById(id).classList.remove('oculta');
 }
-
 mostrarSlide(current);
 </script>
-
 </body>
 </html>
